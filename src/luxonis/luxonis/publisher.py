@@ -26,6 +26,7 @@ CAMERA_INFO_TOPIC_NAME = "cameraInfo"
 ACTION_TOPIC_NAME = "takePhoto"
 
 calibData = None
+currentTime = None
 
 class Camera(Node):
 
@@ -46,6 +47,8 @@ class Camera(Node):
         print("ROS node configured correctly")
     
     def timer_callback(self, data):
+        global currentTime
+
         print("Sending signal to camera")
 
         # Create the camera signal to shoot the photo
@@ -59,18 +62,23 @@ class Camera(Node):
         
         # Get the frame and switch it to the correct sending function
         msgGroup = self.qSync.get()
+
+        currentTime = self.get_clock().now().to_msg()
+
         for name, msg in msgGroup:
             if name == STILL_STREAM_NAME:
+                print("RGB timestamp:", msg.getTimestamp())
                 self.send_rgb(msg)
 
             elif name == DEPTH_STREAM_NAME:
+                print("Depth timestamp:", msg.getTimestamp())
                 self.send_depth(msg)
 
             else:
                 print("[ERROR] Stream doesn't exist")
                 exit(-1)
         
-        self.send_cameraInfo()
+        #self.send_cameraInfo()
 
         self.i += 1
         
@@ -86,6 +94,7 @@ class Camera(Node):
         # Converting to ROS format and sending it
         try:
             image_ROS = self.bridge.cv2_to_imgmsg(cv_image)
+            image_ROS.header.stamp = currentTime
             print("OpenCV image converted to ROS format")
             self.publisherRGB.publish(image_ROS)
             print(f"RGB n {self.i} sent")
@@ -104,6 +113,7 @@ class Camera(Node):
         # Converting to ROS format and sending it
         try:
             image_ROS = self.bridge.cv2_to_imgmsg(cv_image)
+            image_ROS.header.stamp = currentTime
             print("OpenCV image converted to ROS format")
             self.publisherDepth.publish(image_ROS)
             print(f"Depth n {self.i} sent")
@@ -113,6 +123,11 @@ class Camera(Node):
     
     def send_cameraInfo(self):
         print("Sending camera info")
+
+        camera_info_msg = CameraInfo()
+
+        camera_info_msg.header.stamp = currentTime
+        camera_info_msg.height = calibData.getCameraIntrinsics()
 
 
 
@@ -166,7 +181,7 @@ def main(args=None):
     stereo.depth.link(sync.inputs[DEPTH_STREAM_NAME])
 
     # 2 frames are considered synced if shoot in a window of 0.5 seconds
-    sync.setSyncThreshold(timedelta(seconds = 0.5))
+    sync.setSyncThreshold(timedelta(seconds = 0.2))
     
     xoutSynced = pipeline.create(dai.node.XLinkOut)
     xoutSynced.setStreamName(SYNC_STREAM_NAME)

@@ -16,4 +16,4 @@ nomi nodo possibili:
 1) applicant = invia il messaggio di scattare la foto
 2) publisher = quando riceve la richiesta condivide frame RGB, depth e informazioni videocamera
 3) subscriberRGB = ascolta per frame RGB e li visualizza
-4) subscriberDepth = ascolta per frame Depth e li visualizza (non ancora fatto)ù
+4) subscriberDepth = ascolta per frame Depth e li visualizza (non ancora fatto)
