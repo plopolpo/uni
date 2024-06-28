@@ -1,0 +1,41 @@
+[1.398s] Invoking command in '/home/niiro/ros2_ws/src/luxonis': PYTHONPATH=/home/niiro/ros2_ws/build/luxonis/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/luxonis build --build-base /home/niiro/ros2_ws/build/luxonis/build install --record /home/niiro/ros2_ws/build/luxonis/install.log --single-version-externally-managed install_data
+[2.015s] running egg_info
+[2.016s] writing ../../build/luxonis/luxonis.egg-info/PKG-INFO
+[2.018s] writing dependency_links to ../../build/luxonis/luxonis.egg-info/dependency_links.txt
+[2.018s] writing entry points to ../../build/luxonis/luxonis.egg-info/entry_points.txt
+[2.018s] writing requirements to ../../build/luxonis/luxonis.egg-info/requires.txt
+[2.018s] writing top-level names to ../../build/luxonis/luxonis.egg-info/top_level.txt
+[2.021s] reading manifest file '../../build/luxonis/luxonis.egg-info/SOURCES.txt'
+[2.022s] adding license file 'LICENSE'
+[2.023s] writing manifest file '../../build/luxonis/luxonis.egg-info/SOURCES.txt'
+[2.025s] running build
+[2.025s] running build_py
+[2.026s] copying luxonis/__init__.py -> /home/niiro/ros2_ws/build/luxonis/build/lib/luxonis
+[2.027s] copying luxonis/publisherRGB.py -> /home/niiro/ros2_ws/build/luxonis/build/lib/luxonis
+[2.027s] copying luxonis/applicant.py -> /home/niiro/ros2_ws/build/luxonis/build/lib/luxonis
+[2.028s] copying luxonis/takePhoto.py -> /home/niiro/ros2_ws/build/luxonis/build/lib/luxonis
+[2.028s] copying luxonis/subscriberRGB.py -> /home/niiro/ros2_ws/build/luxonis/build/lib/luxonis
+[2.030s] running install
+[2.031s] running install_lib
+[2.031s] copying /home/niiro/ros2_ws/build/luxonis/build/lib/luxonis/__init__.py -> /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis
+[2.031s] copying /home/niiro/ros2_ws/build/luxonis/build/lib/luxonis/publisherRGB.py -> /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis
+[2.031s] copying /home/niiro/ros2_ws/build/luxonis/build/lib/luxonis/applicant.py -> /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis
+[2.032s] copying /home/niiro/ros2_ws/build/luxonis/build/lib/luxonis/takePhoto.py -> /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis
+[2.032s] copying /home/niiro/ros2_ws/build/luxonis/build/lib/luxonis/subscriberRGB.py -> /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis
+[2.032s] byte-compiling /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/__init__.py to __init__.cpython-310.pyc
+[2.032s] byte-compiling /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/publisherRGB.py to publisherRGB.cpython-310.pyc
+[2.044s] byte-compiling /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/applicant.py to applicant.cpython-310.pyc
+[2.044s] byte-compiling /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/takePhoto.py to takePhoto.cpython-310.pyc
+[2.046s] byte-compiling /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/subscriberRGB.py to subscriberRGB.cpython-310.pyc
+[2.046s] running install_data
+[2.046s] copying package.xml -> /home/niiro/ros2_ws/install/luxonis/share/luxonis
+[2.046s] running install_egg_info
+[2.047s] removing '/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis-0.0.0-py3.10.egg-info' (and everything under it)
+[2.047s] Copying ../../build/luxonis/luxonis.egg-info to /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis-0.0.0-py3.10.egg-info
+[2.047s] running install_scripts
+[2.095s] Installing applicant script to /home/niiro/ros2_ws/install/luxonis/lib/luxonis
+[2.095s] Installing publisherRGB script to /home/niiro/ros2_ws/install/luxonis/lib/luxonis
+[2.095s] Installing subscriberRGB script to /home/niiro/ros2_ws/install/luxonis/lib/luxonis
+[2.095s] Installing test script to /home/niiro/ros2_ws/install/luxonis/lib/luxonis
+[2.095s] writing list of installed files to '/home/niiro/ros2_ws/build/luxonis/install.log'
+[2.152s] Invoked command in '/home/niiro/ros2_ws/src/luxonis' returned '0': PYTHONPATH=/home/niiro/ros2_ws/build/luxonis/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/luxonis build --build-base /home/niiro/ros2_ws/build/luxonis/build install --record /home/niiro/ros2_ws/build/luxonis/install.log --single-version-externally-managed install_data

@@ -1,0 +1,63 @@
+[0.000000] (-) TimerEvent: {}
+[0.000315] (luxonis) JobQueued: {'identifier': 'luxonis', 'dependencies': OrderedDict()}
+[0.000384] (luxonis) JobStarted: {'identifier': 'luxonis'}
+[0.098326] (-) TimerEvent: {}
+[0.198996] (-) TimerEvent: {}
+[0.299942] (-) TimerEvent: {}
+[0.400419] (-) TimerEvent: {}
+[0.500896] (-) TimerEvent: {}
+[0.601415] (-) TimerEvent: {}
+[0.701938] (-) TimerEvent: {}
+[0.802395] (-) TimerEvent: {}
+[0.902863] (-) TimerEvent: {}
+[1.003345] (-) TimerEvent: {}
+[1.103817] (-) TimerEvent: {}
+[1.204292] (-) TimerEvent: {}
+[1.304822] (-) TimerEvent: {}
+[1.366612] (luxonis) Command: {'cmd': ['/usr/bin/python3', '-W', 'ignore:setup.py install is deprecated', 'setup.py', 'egg_info', '--egg-base', '../../build/luxonis', 'build', '--build-base', '/home/niiro/ros2_ws/build/luxonis/build', 'install', '--record', '/home/niiro/ros2_ws/build/luxonis/install.log', '--single-version-externally-managed', 'install_data'], 'cwd': '/home/niiro/ros2_ws/src/luxonis', 'env': {'LESSOPEN': '| /usr/bin/lesspipe %s', 'USER': 'niiro', 'XDG_SESSION_TYPE': 'wayland', 'SHLVL': '1', 'LD_LIBRARY_PATH': '/home/niiro/ros2_ws/install/turtlesim/lib:/opt/ros/humble/opt/rviz_ogre_vendor/lib:/opt/ros/humble/lib/x86_64-linux-gnu:/opt/ros/humble/lib', 'HOME': '/home/niiro', 'OLDPWD': '/home/niiro/ros2_ws/src', 'DESKTOP_SESSION': 'ubuntu', 'ROS_PYTHON_VERSION': '3', 'GNOME_SHELL_SESSION_MODE': 'ubuntu', 'GTK_MODULES': 'gail:atk-bridge', 'SYSTEMD_EXEC_PID': '1811', 'DBUS_SESSION_BUS_ADDRESS': 'unix:path=/run/user/1000/bus', 'COLORTERM': 'truecolor', 'IM_CONFIG_PHASE': '1', 'WAYLAND_DISPLAY': 'wayland-0', 'COLCON_PREFIX_PATH': '/home/niiro/ros2_ws/install', 'ROS_DISTRO': 'humble', 'LOGNAME': 'niiro', '_': '/usr/bin/colcon', 'ROS_VERSION': '2', 'XDG_SESSION_CLASS': 'user', 'USERNAME': 'niiro', 'TERM': 'xterm-256color', 'GNOME_DESKTOP_SESSION_ID': 'this-is-deprecated', 'ROS_LOCALHOST_ONLY': '0', 'PATH': '/opt/ros/humble/bin:/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin:/usr/games:/usr/local/games:/snap/bin:/snap/bin', 'SESSION_MANAGER': 'local/neeraj:@/tmp/.ICE-unix/1568,unix/neeraj:/tmp/.ICE-unix/1568', 'XDG_MENU_PREFIX': 'gnome-', 'GNOME_TERMINAL_SCREEN': '/org/gnome/Terminal/screen/f761fefc_5d2d_469b_a97d_585e11b430d3', 'GNOME_SETUP_DISPLAY': ':1', 'XDG_RUNTIME_DIR': '/run/user/1000', 'DISPLAY': ':0', 'LANG': 'it_IT.UTF-8', 'XDG_CURRENT_DESKTOP': 'ubuntu:GNOME', 'XMODIFIERS': '@im=ibus', 'XDG_SESSION_DESKTOP': 'ubuntu', 'XAUTHORITY': '/run/user/1000/.mutter-Xwaylandauth.V2XRP2', 'LS_COLORS': 'rs=0:di=01;34:ln=01;36:mh=00:pi=40;33:so=01;35:do=01;35:bd=40;33;01:cd=40;33;01:or=40;31;01:mi=00:su=37;41:sg=30;43:ca=30;41:tw=30;42:ow=34;42:st=37;44:ex=01;32:*.tar=01;31:*.tgz=01;31:*.arc=01;31:*.arj=01;31:*.taz=01;31:*.lha=01;31:*.lz4=01;31:*.lzh=01;31:*.lzma=01;31:*.tlz=01;31:*.txz=01;31:*.tzo=01;31:*.t7z=01;31:*.zip=01;31:*.z=01;31:*.dz=01;31:*.gz=01;31:*.lrz=01;31:*.lz=01;31:*.lzo=01;31:*.xz=01;31:*.zst=01;31:*.tzst=01;31:*.bz2=01;31:*.bz=01;31:*.tbz=01;31:*.tbz2=01;31:*.tz=01;31:*.deb=01;31:*.rpm=01;31:*.jar=01;31:*.war=01;31:*.ear=01;31:*.sar=01;31:*.rar=01;31:*.alz=01;31:*.ace=01;31:*.zoo=01;31:*.cpio=01;31:*.7z=01;31:*.rz=01;31:*.cab=01;31:*.wim=01;31:*.swm=01;31:*.dwm=01;31:*.esd=01;31:*.jpg=01;35:*.jpeg=01;35:*.mjpg=01;35:*.mjpeg=01;35:*.gif=01;35:*.bmp=01;35:*.pbm=01;35:*.pgm=01;35:*.ppm=01;35:*.tga=01;35:*.xbm=01;35:*.xpm=01;35:*.tif=01;35:*.tiff=01;35:*.png=01;35:*.svg=01;35:*.svgz=01;35:*.mng=01;35:*.pcx=01;35:*.mov=01;35:*.mpg=01;35:*.mpeg=01;35:*.m2v=01;35:*.mkv=01;35:*.webm=01;35:*.webp=01;35:*.ogm=01;35:*.mp4=01;35:*.m4v=01;35:*.mp4v=01;35:*.vob=01;35:*.qt=01;35:*.nuv=01;35:*.wmv=01;35:*.asf=01;35:*.rm=01;35:*.rmvb=01;35:*.flc=01;35:*.avi=01;35:*.fli=01;35:*.flv=01;35:*.gl=01;35:*.dl=01;35:*.xcf=01;35:*.xwd=01;35:*.yuv=01;35:*.cgm=01;35:*.emf=01;35:*.ogv=01;35:*.ogx=01;35:*.aac=00;36:*.au=00;36:*.flac=00;36:*.m4a=00;36:*.mid=00;36:*.midi=00;36:*.mka=00;36:*.mp3=00;36:*.mpc=00;36:*.ogg=00;36:*.ra=00;36:*.wav=00;36:*.oga=00;36:*.opus=00;36:*.spx=00;36:*.xspf=00;36:', 'GNOME_TERMINAL_SERVICE': ':1.309', 'SSH_AGENT_LAUNCHER': 'gnome-keyring', 'SSH_AUTH_SOCK': '/run/user/1000/keyring/ssh', 'AMENT_PREFIX_PATH': '/home/niiro/ros2_ws/install/turtlesim:/opt/ros/humble', 'SHELL': '/bin/bash', 'QT_ACCESSIBILITY': '1', 'GDMSESSION': 'ubuntu', 'LESSCLOSE': '/usr/bin/lesspipe %s %s', 'QT_IM_MODULE': 'ibus', 'PWD': '/home/niiro/ros2_ws/build/luxonis', 'XDG_CONFIG_DIRS': '/etc/xdg/xdg-ubuntu:/etc/xdg', 'XDG_DATA_DIRS': '/usr/share/ubuntu:/usr/local/share/:/usr/share/:/var/lib/snapd/desktop', 'PYTHONPATH': '/home/niiro/ros2_ws/build/luxonis/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages:/home/niiro/ros2_ws/install/turtlesim/local/lib/python3.10/dist-packages:/opt/ros/humble/lib/python3.10/site-packages:/opt/ros/humble/local/lib/python3.10/dist-packages', 'COLCON': '1', 'VTE_VERSION': '6800', 'CMAKE_PREFIX_PATH': '/home/niiro/ros2_ws/install/turtlesim'}, 'shell': False}
+[1.404975] (-) TimerEvent: {}
+[1.505660] (-) TimerEvent: {}
+[1.606303] (-) TimerEvent: {}
+[1.706866] (-) TimerEvent: {}
+[1.807599] (-) TimerEvent: {}
+[1.900140] (luxonis) StdoutLine: {'line': b'running egg_info\n'}
+[1.901810] (luxonis) StdoutLine: {'line': b'creating ../../build/luxonis/luxonis.egg-info\n'}
+[1.902800] (luxonis) StdoutLine: {'line': b'writing ../../build/luxonis/luxonis.egg-info/PKG-INFO\n'}
+[1.903261] (luxonis) StdoutLine: {'line': b'writing dependency_links to ../../build/luxonis/luxonis.egg-info/dependency_links.txt\n'}
+[1.904305] (luxonis) StdoutLine: {'line': b'writing entry points to ../../build/luxonis/luxonis.egg-info/entry_points.txt\n'}
+[1.904497] (luxonis) StdoutLine: {'line': b'writing requirements to ../../build/luxonis/luxonis.egg-info/requires.txt\n'}
+[1.904682] (luxonis) StdoutLine: {'line': b'writing top-level names to ../../build/luxonis/luxonis.egg-info/top_level.txt\n'}
+[1.904865] (luxonis) StdoutLine: {'line': b"writing manifest file '../../build/luxonis/luxonis.egg-info/SOURCES.txt'\n"}
+[1.907718] (luxonis) StdoutLine: {'line': b"reading manifest file '../../build/luxonis/luxonis.egg-info/SOURCES.txt'\n"}
+[1.907949] (-) TimerEvent: {}
+[1.908367] (luxonis) StdoutLine: {'line': b"adding license file 'LICENSE'\n"}
+[1.909187] (luxonis) StdoutLine: {'line': b"writing manifest file '../../build/luxonis/luxonis.egg-info/SOURCES.txt'\n"}
+[1.909942] (luxonis) StdoutLine: {'line': b'running build\n'}
+[1.910477] (luxonis) StdoutLine: {'line': b'running build_py\n'}
+[1.910661] (luxonis) StdoutLine: {'line': b'creating /home/niiro/ros2_ws/build/luxonis/build\n'}
+[1.912941] (luxonis) StdoutLine: {'line': b'creating /home/niiro/ros2_ws/build/luxonis/build/lib\n'}
+[1.913201] (luxonis) StdoutLine: {'line': b'creating /home/niiro/ros2_ws/build/luxonis/build/lib/luxonis\n'}
+[1.913384] (luxonis) StdoutLine: {'line': b'copying luxonis/__init__.py -> /home/niiro/ros2_ws/build/luxonis/build/lib/luxonis\n'}
+[1.913567] (luxonis) StdoutLine: {'line': b'copying luxonis/test.py -> /home/niiro/ros2_ws/build/luxonis/build/lib/luxonis\n'}
+[1.913750] (luxonis) StdoutLine: {'line': b'running install\n'}
+[1.913931] (luxonis) StdoutLine: {'line': b'running install_lib\n'}
+[1.918219] (luxonis) StdoutLine: {'line': b'creating /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis\n'}
+[1.918773] (luxonis) StdoutLine: {'line': b'copying /home/niiro/ros2_ws/build/luxonis/build/lib/luxonis/__init__.py -> /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis\n'}
+[1.918965] (luxonis) StdoutLine: {'line': b'copying /home/niiro/ros2_ws/build/luxonis/build/lib/luxonis/test.py -> /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis\n'}
+[1.919151] (luxonis) StdoutLine: {'line': b'byte-compiling /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/__init__.py to __init__.cpython-310.pyc\n'}
+[1.919400] (luxonis) StdoutLine: {'line': b'byte-compiling /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/test.py to test.cpython-310.pyc\n'}
+[1.919589] (luxonis) StdoutLine: {'line': b'running install_data\n'}
+[1.919795] (luxonis) StdoutLine: {'line': b'creating /home/niiro/ros2_ws/install/luxonis/share/ament_index\n'}
+[1.919978] (luxonis) StdoutLine: {'line': b'creating /home/niiro/ros2_ws/install/luxonis/share/ament_index/resource_index\n'}
+[1.920162] (luxonis) StdoutLine: {'line': b'creating /home/niiro/ros2_ws/install/luxonis/share/ament_index/resource_index/packages\n'}
+[1.920345] (luxonis) StdoutLine: {'line': b'copying resource/luxonis -> /home/niiro/ros2_ws/install/luxonis/share/ament_index/resource_index/packages\n'}
+[1.920528] (luxonis) StdoutLine: {'line': b'copying package.xml -> /home/niiro/ros2_ws/install/luxonis/share/luxonis\n'}
+[1.920710] (luxonis) StdoutLine: {'line': b'running install_egg_info\n'}
+[1.920893] (luxonis) StdoutLine: {'line': b'Copying ../../build/luxonis/luxonis.egg-info to /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis-0.0.0-py3.10.egg-info\n'}
+[1.927514] (luxonis) StdoutLine: {'line': b'running install_scripts\n'}
+[1.965457] (luxonis) StdoutLine: {'line': b'Installing test script to /home/niiro/ros2_ws/install/luxonis/lib/luxonis\n'}
+[1.966093] (luxonis) StdoutLine: {'line': b"writing list of installed files to '/home/niiro/ros2_ws/build/luxonis/install.log'\n"}
+[2.008155] (-) TimerEvent: {}
+[2.020930] (luxonis) CommandEnded: {'returncode': 0}
+[2.041587] (luxonis) JobEnded: {'identifier': 'luxonis', 'rc': 0}
+[2.043592] (-) EventReactorShutdown: {}
