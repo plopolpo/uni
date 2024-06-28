@@ -9,8 +9,6 @@ setup.py
 ../../build/luxonis/luxonis.egg-info/requires.txt
 ../../build/luxonis/luxonis.egg-info/top_level.txt
 ../../build/luxonis/luxonis.egg-info/zip-safe
-luxonis/__init__.py
-luxonis/alignNUOVISSIMO.py
 luxonis/applicant.py
 luxonis/publisher.py
 luxonis/subscriberDepth.py

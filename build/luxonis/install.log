@@ -1,15 +1,3 @@
-/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/__init__.py
-/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/applicant.py
-/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/alignNUOVISSIMO.py
-/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/subscriberDepth.py
-/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/publisher.py
-/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/subscriberRGB.py
-/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/__pycache__/__init__.cpython-310.pyc
-/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/__pycache__/applicant.cpython-310.pyc
-/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/__pycache__/alignNUOVISSIMO.cpython-310.pyc
-/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/__pycache__/subscriberDepth.cpython-310.pyc
-/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/__pycache__/publisher.cpython-310.pyc
-/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/__pycache__/subscriberRGB.cpython-310.pyc
 /home/niiro/ros2_ws/install/luxonis/share/ament_index/resource_index/packages/luxonis
 /home/niiro/ros2_ws/install/luxonis/share/luxonis/package.xml
 /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis-0.0.0-py3.10.egg-info/top_level.txt
