@@ -1,6 +1,0 @@
-[console_scripts]
-applicant = luxonis.applicant:main
-publisher = luxonis.publisher:main
-subscriberDepth = luxonis.subscriberDepth:main
-subscriberRGB = luxonis.subscriberRGB:main
-
