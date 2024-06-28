@@ -2,15 +2,25 @@ import rclpy
 import cv2
 from rclpy.node import Node
 from std_msgs.msg import String
-from sensor_msgs.msg import Image
+from sensor_msgs.msg import Image, CameraInfo
 from cv_bridge import CvBridge, CvBridgeError
 import depthai as dai
 import time
 
+EXTENDED_DISPARITY = False
+SUBPIXEL = False
+LRCHECK = True
+THRESHOLD = 255
+BILATERAL_SIGMA = 0
+
+STILL_STREAM_NAME = "still"
+CONTROL_STREAM_NAME = "control"
+RGB_STREAM_NAME = "rgb"
+DEPTH_STREAM_NAME = "depth"
+
 RGB_TOPIC_NAME = "rgb"
 DEPTH_TOPIC_NAME = "depth"
 ACTION_TOPIC_NAME = "takePhoto"
-TIMER_PERIOD = 2
 
 latestFrame = None
 
@@ -54,6 +64,8 @@ class Camera(Node):
     def send_depth(self):
         print("Sending Depth")
 
+
+
     def timer_callback(self, data):
         self.send_rgb()
         self.send_depth()
@@ -72,19 +84,19 @@ def main(args=None):
     camRgb.setResolution(dai.ColorCameraProperties.SensorResolution.THE_1080_P)
 
     xin = pipeline.create(dai.node.XLinkIn)
-    xin.setStreamName("control")
+    xin.setStreamName(CONTROL_STREAM_NAME)
     xin.out.link(camRgb.inputControl)
 
     xoutStill = pipeline.create(dai.node.XLinkOut)
-    xoutStill.setStreamName("still")
+    xoutStill.setStreamName(STILL_STREAM_NAME)
     camRgb.still.link(xoutStill.input)
 
     print("Configurazione pipeline terminata")
 
     with dai.Device(pipeline) as device:
 
-        qStill = device.getOutputQueue(name="still")
-        qControl = device.getInputQueue(name="control")
+        qStill = device.getOutputQueue(name=STILL_STREAM_NAME)
+        qControl = device.getInputQueue(name=CONTROL_STREAM_NAME)
 
         time.sleep(0.5)
 
