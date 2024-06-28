@@ -22,9 +22,10 @@ SYNC_STREAM_NAME = "sync"
 
 RGB_TOPIC_NAME = "rgb"
 DEPTH_TOPIC_NAME = "depth"
+CAMERA_INFO_TOPIC_NAME = "cameraInfo"
 ACTION_TOPIC_NAME = "takePhoto"
 
-latestFrame = None
+calibData = None
 
 class Camera(Node):
 
@@ -38,6 +39,7 @@ class Camera(Node):
         # Create the publisher
         self.publisherRGB = self.create_publisher(Image, RGB_TOPIC_NAME, 10)
         self.publisherDepth = self.create_publisher(Image, DEPTH_TOPIC_NAME, 10)
+        self.publisherCameraInfo = self.create_publisher(CameraInfo, CAMERA_INFO_TOPIC_NAME, 10)
         
         # Create the subscription
         self.create_subscription(String, ACTION_TOPIC_NAME, self.timer_callback, 10)
@@ -51,9 +53,11 @@ class Camera(Node):
         ctrl.setCaptureStill(True)
         self.qControl.send(ctrl)
 
+        # Wait until the frames are taken
         while not self.qSync.has():
             continue
         
+        # Get the frame and switch it to the correct sending function
         msgGroup = self.qSync.get()
         for name, msg in msgGroup:
             if name == STILL_STREAM_NAME:
@@ -66,37 +70,50 @@ class Camera(Node):
                 print("[ERROR] Stream doesn't exist")
                 exit(-1)
         
+        self.send_cameraInfo()
+
         self.i += 1
         
 
     def send_rgb(self, frame):
         print("Sending RGB")
+
+        # Getting the frame
         cv_image = frame.getCvFrame()
 
         print(f"OpenCV image extracted with dimension: {cv_image.shape}")
 
+        # Converting to ROS format and sending it
         try:
             image_ROS = self.bridge.cv2_to_imgmsg(cv_image)
             print("OpenCV image converted to ROS format")
             self.publisherRGB.publish(image_ROS)
-            print(f"Image n {self.i} sent")
+            print(f"RGB n {self.i} sent")
         except CvBridgeError as e:
             print(e)
 
     
     def send_depth(self, frame):
         print("Sending Depth")
+
+        # Getting the frame
         cv_image = frame.getCvFrame()
 
         print(f"OpenCV image extracted with dimension: {cv_image.shape}")
 
+        # Converting to ROS format and sending it
         try:
             image_ROS = self.bridge.cv2_to_imgmsg(cv_image)
             print("OpenCV image converted to ROS format")
             self.publisherDepth.publish(image_ROS)
-            print(f"Image n {self.i} sent")
+            print(f"Depth n {self.i} sent")
         except CvBridgeError as e:
             print(e)
+
+    
+    def send_cameraInfo(self):
+        print("Sending camera info")
+
 
 
 def main(args=None):
@@ -160,6 +177,8 @@ def main(args=None):
     with dai.Device(pipeline) as device:
         
         # Calibrating the camera
+        print("Calibrating the camera")
+        global calibData
         calibData = device.readCalibration()
         lensPosition = calibData.getLensPosition(dai.CameraBoardSocket.CAM_A)
         if lensPosition:
