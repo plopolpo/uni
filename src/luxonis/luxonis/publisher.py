@@ -1,6 +1,5 @@
 from datetime import timedelta
 import rclpy
-import cv2
 from rclpy.node import Node
 from std_msgs.msg import String
 from sensor_msgs.msg import Image, CameraInfo
@@ -64,14 +63,17 @@ class Camera(Node):
         msgGroup = self.qSync.get()
 
         currentTime = self.get_clock().now().to_msg()
+        rgbTs = depthTs = 0
 
         for name, msg in msgGroup:
             if name == STILL_STREAM_NAME:
                 print("RGB timestamp:", msg.getTimestamp())
+                rgbTs = msg.getTimestamp()
                 self.send_rgb(msg)
 
             elif name == DEPTH_STREAM_NAME:
                 print("Depth timestamp:", msg.getTimestamp())
+                depthTs = msg.getTimestamp()
                 self.send_depth(msg)
 
             else:
@@ -79,7 +81,12 @@ class Camera(Node):
                 exit(-1)
         
         #self.send_cameraInfo()
-
+        
+        if rgbTs - depthTs >= timedelta(seconds=0) :
+            print(f"RGB delay: { abs(rgbTs - depthTs) } \n")
+        else:
+            print(f"Depth delay: { abs(rgbTs - depthTs) } \n")
+        
         self.i += 1
         
 
