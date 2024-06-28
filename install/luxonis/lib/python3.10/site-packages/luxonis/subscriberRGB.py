@@ -6,12 +6,11 @@ from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 
 TOPIC_NAME = "rgb"
-TIMER_PERIOD = 0.5
 
 class ReceiverRGB(Node):
 
     def __init__(self):
-        super().__init__('fotocamera')
+        super().__init__('subscriberRGB')
         self.bridge = CvBridge()
         self.subscriber_ = self.create_subscription(Image, TOPIC_NAME, self.callback, 10)
         self.i = 0

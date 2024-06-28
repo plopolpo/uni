@@ -11,10 +11,9 @@ setup.py
 ../../build/luxonis/luxonis.egg-info/zip-safe
 luxonis/__init__.py
 luxonis/applicant.py
-luxonis/publisherRGB.py
+luxonis/publisher.py
+luxonis/subscriberDepth.py
 luxonis/subscriberRGB.py
-luxonis/takePhoto.py
-luxonis/test.py
 resource/luxonis
 test/test_copyright.py
 test/test_flake8.py

@@ -20,10 +20,10 @@ setup(
     tests_require=['pytest'],
     entry_points={
         'console_scripts': [
-            'test = luxonis.test:main',
-            'publisherRGB = luxonis.publisherRGB:main',
+            'applicant = luxonis.applicant:main',
+            'publisher = luxonis.publisher:main',
             'subscriberRGB = luxonis.subscriberRGB:main',
-            'applicant = luxonis.applicant:main'
+            'subscriberDepth = luxonis.subscriberDepth:main'
         ],
     },
 )

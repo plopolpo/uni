@@ -1,0 +1,28 @@
+[1.373s] Invoking command in '/home/niiro/ros2_ws/src/luxonis': PYTHONPATH=/home/niiro/ros2_ws/build/luxonis/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/luxonis build --build-base /home/niiro/ros2_ws/build/luxonis/build install --record /home/niiro/ros2_ws/build/luxonis/install.log --single-version-externally-managed install_data
+[1.903s] running egg_info
+[1.904s] writing ../../build/luxonis/luxonis.egg-info/PKG-INFO
+[1.905s] writing dependency_links to ../../build/luxonis/luxonis.egg-info/dependency_links.txt
+[1.905s] writing entry points to ../../build/luxonis/luxonis.egg-info/entry_points.txt
+[1.906s] writing requirements to ../../build/luxonis/luxonis.egg-info/requires.txt
+[1.906s] writing top-level names to ../../build/luxonis/luxonis.egg-info/top_level.txt
+[1.910s] reading manifest file '../../build/luxonis/luxonis.egg-info/SOURCES.txt'
+[1.910s] adding license file 'LICENSE'
+[1.912s] writing manifest file '../../build/luxonis/luxonis.egg-info/SOURCES.txt'
+[1.912s] running build
+[1.912s] running build_py
+[1.913s] copying luxonis/publisher.py -> /home/niiro/ros2_ws/build/luxonis/build/lib/luxonis
+[1.914s] running install
+[1.916s] running install_lib
+[1.916s] copying /home/niiro/ros2_ws/build/luxonis/build/lib/luxonis/publisher.py -> /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis
+[1.918s] byte-compiling /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/publisher.py to publisher.cpython-310.pyc
+[1.920s] running install_data
+[1.921s] running install_egg_info
+[1.924s] removing '/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis-0.0.0-py3.10.egg-info' (and everything under it)
+[1.925s] Copying ../../build/luxonis/luxonis.egg-info to /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis-0.0.0-py3.10.egg-info
+[1.927s] running install_scripts
+[1.969s] Installing applicant script to /home/niiro/ros2_ws/install/luxonis/lib/luxonis
+[1.970s] Installing publisher script to /home/niiro/ros2_ws/install/luxonis/lib/luxonis
+[1.970s] Installing subscriberRGB script to /home/niiro/ros2_ws/install/luxonis/lib/luxonis
+[1.970s] Installing test script to /home/niiro/ros2_ws/install/luxonis/lib/luxonis
+[1.974s] writing list of installed files to '/home/niiro/ros2_ws/build/luxonis/install.log'
+[2.027s] Invoked command in '/home/niiro/ros2_ws/src/luxonis' returned '0': PYTHONPATH=/home/niiro/ros2_ws/build/luxonis/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated setup.py egg_info --egg-base ../../build/luxonis build --build-base /home/niiro/ros2_ws/build/luxonis/build install --record /home/niiro/ros2_ws/build/luxonis/install.log --single-version-externally-managed install_data

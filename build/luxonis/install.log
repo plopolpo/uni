@@ -1,14 +1,12 @@
 /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/__init__.py
-/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/publisherRGB.py
 /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/applicant.py
-/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/takePhoto.py
-/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/test.py
+/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/subscriberDepth.py
+/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/publisher.py
 /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/subscriberRGB.py
 /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/__pycache__/__init__.cpython-310.pyc
-/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/__pycache__/publisherRGB.cpython-310.pyc
 /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/__pycache__/applicant.cpython-310.pyc
-/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/__pycache__/takePhoto.cpython-310.pyc
-/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/__pycache__/test.cpython-310.pyc
+/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/__pycache__/subscriberDepth.cpython-310.pyc
+/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/__pycache__/publisher.cpython-310.pyc
 /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/__pycache__/subscriberRGB.cpython-310.pyc
 /home/niiro/ros2_ws/install/luxonis/share/ament_index/resource_index/packages/luxonis
 /home/niiro/ros2_ws/install/luxonis/share/luxonis/package.xml
@@ -20,6 +18,6 @@
 /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis-0.0.0-py3.10.egg-info/dependency_links.txt
 /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis-0.0.0-py3.10.egg-info/zip-safe
 /home/niiro/ros2_ws/install/luxonis/lib/luxonis/applicant
-/home/niiro/ros2_ws/install/luxonis/lib/luxonis/publisherRGB
+/home/niiro/ros2_ws/install/luxonis/lib/luxonis/publisher
+/home/niiro/ros2_ws/install/luxonis/lib/luxonis/subscriberDepth
 /home/niiro/ros2_ws/install/luxonis/lib/luxonis/subscriberRGB
-/home/niiro/ros2_ws/install/luxonis/lib/luxonis/test

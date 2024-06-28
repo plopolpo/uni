@@ -5,12 +5,12 @@ from std_msgs.msg import String
 from sensor_msgs.msg import Image
 from cv_bridge import CvBridge, CvBridgeError
 
-TOPIC_NAME = "rgb"
+TOPIC_NAME = "depth"
 
-class ReceiverRGB(Node):
+class ReceiverDepth(Node):
 
     def __init__(self):
-        super().__init__('subscriberRGB')
+        super().__init__('receiverDepth')
         self.bridge = CvBridge()
         self.subscriber_ = self.create_subscription(Image, TOPIC_NAME, self.callback, 10)
         self.i = 0
@@ -30,7 +30,7 @@ class ReceiverRGB(Node):
 def main(args=None):
     rclpy.init(args=args)
     
-    receiver = ReceiverRGB()
+    receiver = ReceiverDepth()
 
     try:
         rclpy.spin(receiver)
