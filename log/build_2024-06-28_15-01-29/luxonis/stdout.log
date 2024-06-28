@@ -1,0 +1,26 @@
+running egg_info
+writing ../../build/luxonis/luxonis.egg-info/PKG-INFO
+writing dependency_links to ../../build/luxonis/luxonis.egg-info/dependency_links.txt
+writing entry points to ../../build/luxonis/luxonis.egg-info/entry_points.txt
+writing requirements to ../../build/luxonis/luxonis.egg-info/requires.txt
+writing top-level names to ../../build/luxonis/luxonis.egg-info/top_level.txt
+reading manifest file '../../build/luxonis/luxonis.egg-info/SOURCES.txt'
+adding license file 'LICENSE'
+writing manifest file '../../build/luxonis/luxonis.egg-info/SOURCES.txt'
+running build
+running build_py
+copying luxonis/publisher.py -> /home/niiro/ros2_ws/build/luxonis/build/lib/luxonis
+running install
+running install_lib
+copying /home/niiro/ros2_ws/build/luxonis/build/lib/luxonis/publisher.py -> /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis
+byte-compiling /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis/publisher.py to publisher.cpython-310.pyc
+running install_data
+running install_egg_info
+removing '/home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis-0.0.0-py3.10.egg-info' (and everything under it)
+Copying ../../build/luxonis/luxonis.egg-info to /home/niiro/ros2_ws/install/luxonis/lib/python3.10/site-packages/luxonis-0.0.0-py3.10.egg-info
+running install_scripts
+Installing applicant script to /home/niiro/ros2_ws/install/luxonis/lib/luxonis
+Installing publisher script to /home/niiro/ros2_ws/install/luxonis/lib/luxonis
+Installing subscriberDepth script to /home/niiro/ros2_ws/install/luxonis/lib/luxonis
+Installing subscriberRGB script to /home/niiro/ros2_ws/install/luxonis/lib/luxonis
+writing list of installed files to '/home/niiro/ros2_ws/build/luxonis/install.log'

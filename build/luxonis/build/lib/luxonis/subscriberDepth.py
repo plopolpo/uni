@@ -13,7 +13,6 @@ class ReceiverDepth(Node):
         super().__init__('receiverDepth')
         self.bridge = CvBridge()
         self.subscriber_ = self.create_subscription(Image, TOPIC_NAME, self.callback, 10)
-        self.i = 0
 
     def callback(self, data):
         try:
@@ -21,7 +20,6 @@ class ReceiverDepth(Node):
             print("Immagine ricevuta")
             print(type(imageOpenCV))
             cv2.imshow("finestra", imageOpenCV)
-            self.i += 1
             cv2.waitKey(1)
         except CvBridgeError as e:
             print(e)
