@@ -66,7 +66,7 @@ class Camera(Node):
 
         currentTime = self.get_clock().now().to_msg()
         rgbTs = depthTs = 0
-
+        
         for name, msg in msgGroup:
             if name == STILL_STREAM_NAME:
                 print("RGB timestamp:", msg.getTimestamp())
