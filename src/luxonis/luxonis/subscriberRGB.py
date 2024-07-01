@@ -19,6 +19,7 @@ class ReceiverRGB(Node):
             imageOpenCV = self.bridge.imgmsg_to_cv2(data)
             print("Immagine ricevuta")
             print(type(imageOpenCV))
+            print(f"OpenCV image extracted with dimension: {imageOpenCV.shape}")
             cv2.imshow("finestra", imageOpenCV)
             cv2.waitKey(1)
         except CvBridgeError as e:

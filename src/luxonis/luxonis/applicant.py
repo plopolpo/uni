@@ -18,8 +18,6 @@ class CameraRGB(Node):
         msg = String()
         self.publisher_.publish(msg)
 
-
-
 def main(args=None):
 
     # ROS part
