@@ -198,7 +198,7 @@ def main(args=None):
     stereo.setDepthAlign(dai.CameraBoardSocket.CAM_A)
 
     # Connect the stereo depth stream to the sync node
-    stereo.depth.link(sync.inputs[DEPTH_STREAM_NAME])
+    stereo.disparity.link(sync.inputs[DEPTH_STREAM_NAME])
 
     # 2 frames are considered synced if shoot in a window of 0.5 seconds
     sync.setSyncThreshold(timedelta(seconds = 0.2))
