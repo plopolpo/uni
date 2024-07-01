@@ -180,7 +180,8 @@ def main(args=None):
     stereo.setLeftRightCheck(LRCHECK)
     stereo.setExtendedDisparity(EXTENDED_DISPARITY)
     stereo.setSubpixel(SUBPIXEL)
-
+    
+    3
     # Aligning the output of stereo to the output of color camera
     stereo.setDepthAlign(dai.CameraBoardSocket.CAM_A)
 
