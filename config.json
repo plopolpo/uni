@@ -1,0 +1,38 @@
+{
+    "resizeResolution": {
+        "width": 640,
+        "height": 480
+    },
+
+    "camera" : {
+        "mono": {
+            "fpsCap": 40,
+            "resolution": "720"
+        },
+        "rgb": {
+            "fpsCap": 40,
+            "resolution": "1080"
+        }
+    },
+
+    "stereo":  {
+        "speckleFilter": true,
+        "confidenceThreshold": 255,
+        "bilateralSigma": 0,
+        "LRCheck": true,
+        "extendedDisparity": false,
+        "subpixel": false
+    },
+
+    "sync": {
+        "syncThresholdSeconds": 0.2
+    },
+
+    "node": {
+        "name": "camera",
+        "rgbTopicName": "rgb",
+        "depthTopicName": "depth",
+        "cameraInfoTopicName": "cameraInfo",
+        "actionTopicName": "takePhoto"
+    }
+}
