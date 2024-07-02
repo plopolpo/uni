@@ -184,7 +184,7 @@ class Camera(Node):
             print(e)
             exit(-1)
 
-    
+
     def send_cameraInfo(self):
         print("Sending camera info")
 
