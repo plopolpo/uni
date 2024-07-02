@@ -22,8 +22,7 @@ setup(
         'console_scripts': [
             'applicant = luxonis.applicant:main',
             'publisher = luxonis.publisher:main',
-            'subscriberRGB = luxonis.subscriberRGB:main',
-            'subscriberDepth = luxonis.subscriberDepth:main'
+            'subscriber = luxonis.subscriber:main',
         ],
     },
 )

@@ -6,11 +6,11 @@
 
     "camera" : {
         "mono": {
-            "fpsCap": 40,
+            "fpsCap": 30,
             "resolution": "720"
         },
         "rgb": {
-            "fpsCap": 40,
+            "fpsCap": 30,
             "resolution": "1080"
         }
     },

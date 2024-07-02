@@ -2,6 +2,7 @@ import rclpy
 import depthai as dai
 import time
 import cv2
+import json
 from rclpy.node import Node
 from std_msgs.msg import String
 from sensor_msgs.msg import Image, CameraInfo
@@ -9,12 +10,13 @@ from cv_bridge import CvBridge, CvBridgeError
 from datetime import timedelta
 
 # Default values
-RESIZE_RESOLUTION = (640, 480)
+RESIZE_RESOLUTION_WIDTH = 640
+RESIZE_RESOLUTION_HEIGHT = 480
 SPECKLE_FILTER = True
 COLOR_CAMERA_RES = dai.ColorCameraProperties.SensorResolution.THE_1080_P
 MONO_CAMERA_RES = dai.MonoCameraProperties.SensorResolution.THE_720_P
-COLOR_CAMERA_FPS = 40
-MONO_CAMERA_FPS = 40
+COLOR_CAMERA_FPS = 30
+MONO_CAMERA_FPS = 30
 SYNC_THRESHOLD_SECONDS = 0.2
 
 EXTENDED_DISPARITY = False
@@ -35,6 +37,10 @@ CAMERA_INFO_TOPIC_NAME = "cameraInfo"
 ACTION_TOPIC_NAME = "takePhoto"
 
 NODE_NAME = "camera"
+
+ctrl = None
+calibData = None
+currentTime = None
 
 def flatten_matrix(matrix):
     return [item for sublist in matrix for item in sublist]
@@ -139,8 +145,6 @@ class Camera(Node):
         print("Sending signal to camera")
 
         # Create the camera signal to shoot the photo
-        ctrl = dai.CameraControl()
-        ctrl.setCaptureStill(True)
         self.qControl.send(ctrl)
         
         # Wait until the frames are taken, get the frame and switch it to the correct sending function
@@ -153,12 +157,12 @@ class Camera(Node):
             if name == STILL_STREAM_NAME:
                 print("RGB timestamp:", msg.getTimestamp())
                 rgbTs = msg.getTimestamp()
-                self.send_rgb(msg)
+                self.send_frame(msg, self.publisherRGB)
 
             elif name == DEPTH_STREAM_NAME:
                 print("Depth timestamp:", msg.getTimestamp())
                 depthTs = msg.getTimestamp()
-                self.send_depth(msg)
+                self.send_frame(msg, self.publisherDepth)
 
             else:
                 print("[ERROR] Stream doesn't exist")
@@ -172,46 +176,20 @@ class Camera(Node):
             print(f"Depth delay: { abs(rgbTs - depthTs) } \n")
         
         self.i += 1
-        
 
-    def send_rgb(self, frame):
-        print("Sending RGB")
-
+    def send_frame(self, frame, publisher):
         # Getting the frame
         cv_image = frame.getCvFrame()
-
-        print(f"OpenCV image extracted with dimension: {cv_image.shape}")
 
         # Converting to ROS format and sending it
         try:
             cv_image = cv2.resize(cv_image, (RESIZE_RESOLUTION_WIDTH, RESIZE_RESOLUTION_HEIGHT), interpolation=cv2.INTER_LINEAR)
             image_ROS = self.bridge.cv2_to_imgmsg(cv_image)
             image_ROS.header.stamp = currentTime
-            print("OpenCV image converted to ROS format")
-            self.publisherRGB.publish(image_ROS)
-            print(f"RGB n {self.i} sent")
+            publisher.publish(image_ROS)
         except CvBridgeError as e:
             print(e)
-
-    
-    def send_depth(self, frame):
-        print("Sending Depth")
-
-        # Getting the frame
-        cv_image = frame.getCvFrame()
-
-        print(f"OpenCV image extracted with dimension: {cv_image.shape}")
-
-        # Converting to ROS format and sending it
-        try:
-            cv_image = cv2.resize(cv_image, (RESIZE_RESOLUTION_WIDTH, RESIZE_RESOLUTION_HEIGHT), interpolation=cv2.INTER_LINEAR)
-            image_ROS = self.bridge.cv2_to_imgmsg(cv_image)
-            image_ROS.header.stamp = currentTime
-            print("OpenCV image converted to ROS format")
-            self.publisherDepth.publish(image_ROS)
-            print(f"Depth n {self.i} sent")
-        except CvBridgeError as e:
-            print(e)
+            exit(-1)
 
     
     def send_cameraInfo(self):
@@ -234,6 +212,8 @@ class Camera(Node):
 
 
 def main(args=None):
+
+    parseConfig()
 
     print("Configuring pipeline")
     
@@ -292,12 +272,17 @@ def main(args=None):
     xoutSynced.setStreamName(SYNC_STREAM_NAME)
     sync.out.link(xoutSynced.input)
 
+    global ctrl
+    ctrl = dai.CameraControl()
+    ctrl.setCaptureStill(True)
+
     print("Pipeline configuration terminated")
 
     with dai.Device(pipeline) as device:
         
         # Calibrating the camera
         print("Calibrating the camera")
+        
         global calibData
         calibData = device.readCalibration()
         lensPosition = calibData.getLensPosition(dai.CameraBoardSocket.CAM_A)
