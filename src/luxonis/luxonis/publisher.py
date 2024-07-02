@@ -25,7 +25,7 @@ LRCHECK = True
 THRESHOLD = 255
 BILATERAL_SIGMA = 0
 
-STILL_STREAM_NAME = "still"
+ISP_STREAM_NAME = "isp"
 CONTROL_STREAM_NAME = "control"
 RGB_STREAM_NAME = "rgb"
 DEPTH_STREAM_NAME = "depth"
@@ -123,10 +123,9 @@ def parseConfig():
 
 class Camera(Node):
 
-    def __init__(self, qSync, qControl):
+    def __init__(self, qIsp):
         super().__init__(NODE_NAME)
-        self.qSync = qSync
-        self.qControl = qControl
+        self.qIsp = qIsp
         self.i = 0
         self.bridge = CvBridge()
         
@@ -142,39 +141,17 @@ class Camera(Node):
     def timer_callback(self, data):
         global currentTime
 
-        print("Sending signal to camera")
-
-        # Create the camera signal to shoot the photo
-        self.qControl.send(ctrl)
-        
         # Wait until the frames are taken, get the frame and switch it to the correct sending function
-        msgGroup = self.qSync.get()
+        img = self.qIsp.get()
 
         currentTime = self.get_clock().now().to_msg()
         rgbTs = depthTs = 0
         
-        for name, msg in msgGroup:
-            if name == STILL_STREAM_NAME:
-                print("RGB timestamp:", msg.getTimestamp())
-                rgbTs = msg.getTimestamp()
-                self.send_frame(msg, self.publisherRGB)
-
-            elif name == DEPTH_STREAM_NAME:
-                print("Depth timestamp:", msg.getTimestamp())
-                depthTs = msg.getTimestamp()
-                self.send_frame(msg, self.publisherDepth)
-
-            else:
-                print("[ERROR] Stream doesn't exist")
-                exit(-1)
+        print("RGB timestamp:", img.getTimestamp())
+        rgbTs = img.getTimestamp()
+        self.send_frame(img, self.publisherRGB)
         
         self.send_cameraInfo()
-        
-        if rgbTs - depthTs >= timedelta(seconds=0) :
-            print(f"RGB delay: { abs(rgbTs - depthTs) } \n")
-        else:
-            print(f"Depth delay: { abs(rgbTs - depthTs) } \n")
-        
         self.i += 1
 
     def send_frame(self, frame, publisher):
@@ -219,8 +196,6 @@ def main(args=None):
     
     pipeline = dai.Pipeline()
 
-    sync = pipeline.create(dai.node.Sync)
-
     # Setup color camera
     camRgb = pipeline.create(dai.node.ColorCamera)
     camRgb.setBoardSocket(dai.CameraBoardSocket.CAM_A)
@@ -228,53 +203,9 @@ def main(args=None):
     camRgb.setResolution(COLOR_CAMERA_RES)
     camRgb.setFps(COLOR_CAMERA_FPS)
 
-    # Connect the RGB stream to the sync node
-    camRgb.still.link(sync.inputs[STILL_STREAM_NAME])
-
-    # Input for the Color camera (to control the still stream)
-    xin = pipeline.create(dai.node.XLinkIn)
-    xin.setStreamName(CONTROL_STREAM_NAME)
-    xin.out.link(camRgb.inputControl)
-    
-    
-    # Setup monocamera e stereoDepth nodes
-    monoLeft = pipeline.create(dai.node.MonoCamera)
-    monoRight = pipeline.create(dai.node.MonoCamera)
-    stereo = pipeline.create(dai.node.StereoDepth)
-    
-    monoRight.setResolution(MONO_CAMERA_RES)
-    monoLeft.setResolution(MONO_CAMERA_RES)
-    monoRight.setFps(MONO_CAMERA_FPS)
-    monoLeft.setFps(MONO_CAMERA_FPS)
-    monoRight.setBoardSocket(dai.CameraBoardSocket.CAM_C)
-    monoLeft.setBoardSocket(dai.CameraBoardSocket.CAM_B)
-
-    monoLeft.out.link(stereo.left)
-    monoRight.out.link(stereo.right)
-
-    stereo.initialConfig.PostProcessing.SpeckleFilter.enable = SPECKLE_FILTER
-    stereo.initialConfig.setConfidenceThreshold(THRESHOLD)
-    stereo.initialConfig.setBilateralFilterSigma(BILATERAL_SIGMA)
-    stereo.setLeftRightCheck(LRCHECK)
-    stereo.setExtendedDisparity(EXTENDED_DISPARITY)
-    stereo.setSubpixel(SUBPIXEL)
-    
-    # Aligning the output of stereo to the output of color camera
-    stereo.setDepthAlign(dai.CameraBoardSocket.CAM_A)
-
-    # Connect the stereo depth stream to the sync node
-    stereo.disparity.link(sync.inputs[DEPTH_STREAM_NAME])
-
-    # 2 frames are considered synced if shoot in a window of 0.5 seconds
-    sync.setSyncThreshold(timedelta(seconds = SYNC_THRESHOLD_SECONDS))
-    
-    xoutSynced = pipeline.create(dai.node.XLinkOut)
-    xoutSynced.setStreamName(SYNC_STREAM_NAME)
-    sync.out.link(xoutSynced.input)
-
-    global ctrl
-    ctrl = dai.CameraControl()
-    ctrl.setCaptureStill(True)
+    xoutLink = pipeline.createXLinkOut()
+    xoutLink.setStreamName(ISP_STREAM_NAME)
+    camRgb.isp.link(xoutLink.input)
 
     print("Pipeline configuration terminated")
 
@@ -289,15 +220,14 @@ def main(args=None):
         if lensPosition:
             camRgb.initialControl.setManualFocus(lensPosition)
 
-        qSync = device.getOutputQueue(name=SYNC_STREAM_NAME, maxSize=1, blocking=False)
-        qControl = device.getInputQueue(name=CONTROL_STREAM_NAME)
+        qIsp = device.getOutputQueue(name=ISP_STREAM_NAME, maxSize=1, blocking=False)
 
         time.sleep(0.5)
 
         # ROS inizialization
         rclpy.init(args=args)
 
-        camera = Camera(qSync, qControl)
+        camera = Camera(qIsp)
 
         # Starting the callbacks
         try:

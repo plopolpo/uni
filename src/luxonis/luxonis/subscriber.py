@@ -25,44 +25,19 @@ class Receiver(Node):
         super().__init__('subscriber')
         self.bridge = CvBridge()
         self.subscriberRGB_ = self.create_subscription(Image, RGB_TOPIC_NAME, self.callbackRGB, 10)
-        self.subscriberDEPTH_ = self.create_subscription(Image, DEPTH_TOPIC_NAME, self.callbackDEPTH, 10)
 
     def callbackRGB(self, data):
         global frameRgb
-        imageOpenCV = None
         try:
-            imageOpenCV = self.bridge.imgmsg_to_cv2(data)
+            frameRgb = self.bridge.imgmsg_to_cv2(data)
         except CvBridgeError as e:
             print(e)
             exit(-1)
-        
-        frameRgb = imageOpenCV
-        print(f"OpenCV image extracted with dimension: {imageOpenCV.shape}")
+
+        print(f"OpenCV image extracted with dimension: {frameRgb.shape}")
         print("Immagine RGB ricevuta")
-        print(type(imageOpenCV))
-    
-    def callbackDEPTH(self, data):
-        global frameDisp
-        imageOpenCV = None
-        try:
-            imageOpenCV = self.bridge.imgmsg_to_cv2(data)
-        except CvBridgeError as e:
-            print(e)
-            exit(-1)
-
-        print("Immagine Depth ricevuta")
-        frameDisp = imageOpenCV
-        frameDisp = cv2.normalize(frameDisp, None, 0, 255, cv2.NORM_MINMAX)
-        frameDisp = numpy.uint8(frameDisp)
-        frameDisp = cv2.applyColorMap(frameDisp, cv2.COLORMAP_JET)
-        print("ColorMap applicata") 
-
-        if frameRgb is not None:
-            blended = cv2.addWeighted(frameRgb, rgbWeight, frameDisp, depthWeight, 0)
-            cv2.imshow(WINDOW_NAME, blended)
-            #cv2.imshow(WINDOW_NAME, frameDisp)
-            cv2.waitKey(1)
-
+        cv2.imshow(WINDOW_NAME, frameRgb)
+        cv2.waitKey(1)
 
 def main(args=None):
 
