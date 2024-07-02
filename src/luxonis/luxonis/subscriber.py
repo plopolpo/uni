@@ -8,8 +8,7 @@ from cv_bridge import CvBridge, CvBridgeError
 
 RGB_TOPIC_NAME = "rgb"
 DEPTH_TOPIC_NAME = "depth"
-WINDOW_NAME_RGB = "RGB"
-WINDOW_NAME_DEPTH= "DEPTH"
+WINDOW_NAME = "RGB/DEPTH"
 DEFAULT_DISPARITY = 95
 
 # Percentuale rgb/depth nell'immagine
@@ -18,6 +17,12 @@ depthWeight = 0.6
 
 frameRgb = None
 frameDisp = None
+
+# Funzione per regolare la percentuale di rgb e depthmap 
+def updateBlendWeights(percent_rgb):
+    global depthWeight, rgbWeight
+    rgbWeight = float(percent_rgb) / 100.0
+    depthWeight = 1.0 - rgbWeight
 
 class Receiver(Node):
 
@@ -35,11 +40,6 @@ class Receiver(Node):
             print(e)
             exit(-1)
 
-        print(f"OpenCV image extracted with dimension: {frameRgb.shape}")
-        print("Immagine RGB ricevuta")
-        cv2.imshow(WINDOW_NAME_RGB, frameRgb)
-        cv2.waitKey(1)
-
     def callbackDEPTH(self, data):
         global frameDisp
         try:
@@ -54,17 +54,19 @@ class Receiver(Node):
         frameDisp = cv2.applyColorMap(frameDisp, cv2.COLORMAP_JET)
         print("ColorMap applicata")
 
-        cv2.imshow(WINDOW_NAME_DEPTH, frameDisp)
-        cv2.waitKey(1)
+        if frameRgb is not None:
+            blended = cv2.addWeighted(frameRgb, rgbWeight, frameDisp, depthWeight, 0)
+            cv2.imshow(WINDOW_NAME, blended)
+            cv2.waitKey(1)
 
 def main(args=None):
-
     
     rclpy.init(args=args)
     receiver = Receiver()
     
-    cv2.namedWindow(WINDOW_NAME_RGB)
-    cv2.namedWindow(WINDOW_NAME_DEPTH)
+    cv2.namedWindow(WINDOW_NAME)
+    cv2.createTrackbar('RGB Depth', WINDOW_NAME, int(rgbWeight * 100), 100, updateBlendWeights)
+    
 
     try:
         rclpy.spin(receiver)
