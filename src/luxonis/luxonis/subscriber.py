@@ -62,13 +62,6 @@ class Receiver(Node):
             cv2.imshow(WINDOW_NAME, blended)
             #cv2.imshow(WINDOW_NAME, frameDisp)
             cv2.waitKey(1)
-    
-
-# Funzione per regolare la percentuale di rgb e depthmap 
-def updateBlendWeights(percent_rgb):
-    global depthWeight, rgbWeight
-    rgbWeight = float(percent_rgb) / 100.0
-    depthWeight = 1.0 - rgbWeight
 
 
 def main(args=None):
@@ -79,7 +72,6 @@ def main(args=None):
     
     # Crea la trackbar per regolare depth - rgb
     cv2.namedWindow(WINDOW_NAME)
-    cv2.createTrackbar('RGB Depth', WINDOW_NAME, int(rgbWeight * 100), 100, updateBlendWeights)
 
     try:
         rclpy.spin(receiver)

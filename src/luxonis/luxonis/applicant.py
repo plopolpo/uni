@@ -3,7 +3,7 @@ from rclpy.node import Node
 from std_msgs.msg import String
 
 TOPIC_NAME = "takePhoto"
-TIMER_PERIOD = 2
+TIMER_PERIOD = 0.1
 
 class CameraRGB(Node):
 
