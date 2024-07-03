@@ -1,7 +1,7 @@
 
-# <TITLE>
+# CAMOLIRI
 
-<TITLE> is a small collection of ROS2 nodes which interact in order to send and collect rgb and depth frames from the OAKD camera. 
+CAMOLIRI is a small collection of ROS2 nodes which interact in order to send and collect rgb and depth frames from the OAKD camera. 
 
 
 ## Nodes
