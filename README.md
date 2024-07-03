@@ -73,7 +73,7 @@ Those are the nodes you can run with ROS2
 - Run the node
 
 ```bash
-  ros2 run luxonis <node-name>
+  $ ros2 run luxonis <node-name>
 ```
  
 
