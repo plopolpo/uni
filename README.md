@@ -15,6 +15,12 @@ Those are the nodes you can run with ROS2
 | `subscriber`| Displays the rgb and depth images received from `RGB_TOPIC_NAME` and `DEPTH_TOPIC_NAME` in an OpenCV window |
 
 
+## Features
+
+- Editable config file for easy tweaking
+- High performance
+- Highly customizable
+
 
 ## Setup Locally
 
