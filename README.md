@@ -1,19 +1,85 @@
-# uni
 
-nel terminale di compilazione:
-source /opt/ros/humble/setup.bash
+# <TITLE>
 
-colcon build
+<TITLE> is a small collection of ROS2 nodes which interact in order to send and collect rgb and depth frames from the OAKD camera. 
 
-nel terminale di esecuzione:
-source /opt/ros/humble/setup.bash
 
-source install/local_setup.bash
+## Nodes
 
-ros2 run luxonis "nome nodo"
+Those are the nodes you can run with ROS2 
 
-nomi nodo possibili:
-1) applicant = invia il messaggio di scattare la foto
-2) publisher = quando riceve la richiesta condivide frame RGB, depth e informazioni videocamera
-3) subscriberRGB = ascolta per frame RGB e li visualizza
-4) subscriberDepth = ascolta per frame Depth e li visualizza (non ancora fatto)
+| Node name   | Description                                                   |
+| :--------   | :----------------------------------------------------------   |
+| `applicant` | It sends each `TIMER_PERIOD` a message to `ACTION_TOPIC_NAME` |
+| `publisher` | When it receives a message on `ACTION_TOPIC_NAME` it sends both the rgb and depth frames to `RGB_TOPIC_NAME` and `DEPTH_TOPIC_NAME` respectively|
+| `subscriber`| Displays the rgb and depth images received from `RGB_TOPIC_NAME` and `DEPTH_TOPIC_NAME` in an OpenCV window |
+
+
+
+## Setup Locally
+
+- [Setup ROS2 humble](https://docs.ros.org/en/humble/Installation.html)
+
+- [Setup Depthai](https://docs.luxonis.com/software/depthai/manual-install/)
+
+- Clone the project
+
+```bash
+  $ git clone https://github.com/plopolpo/uni.git
+```
+
+- Go to the project directory
+
+```bash
+  $ cd uni
+```
+
+- Source the environment for the current ROS2 installation
+
+```bash
+  $ source /path/to/ros2-humble/setup.bash
+```
+
+- Install the missing dependencies
+
+```bash
+  $ rosdep install -i --from-path src --rosdistro humble -y
+```
+
+- Compile the project
+
+```bash
+  $ colcon build
+```
+ 
+
+## Run Locally
+
+- Plug in [OAKD](https://shop.luxonis.com/products/oak-d) camera
+
+- Go to the project directory
+
+```bash
+  $ cd uni
+```
+
+- Source the environment for the current ROS2 installation and project
+
+```bash
+  $ source /path/to/ros2-humble/setup.bash
+  $ source install/local_setup.bash
+```
+
+- Run the node
+
+```bash
+  ros2 run luxonis <node-name>
+```
+ 
+
+
+## Authors
+
+- [Polo Leonardo](https://www.github.com/PloGaming)
+- Nolli Nathhan
+- Kumar Neeraj
