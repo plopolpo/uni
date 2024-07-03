@@ -1,7 +1,7 @@
 
-# CAMOLIRI
+# nolipoliniri
 
-CAMOLIRI is a small collection of ROS2 nodes which interact in order to send and collect rgb and depth frames from the OAKD camera. 
+nolipoliniri is a small collection of ROS2 nodes which interact in order to send and collect rgb and depth frames from the OAKD camera. 
 
 
 ## Nodes
